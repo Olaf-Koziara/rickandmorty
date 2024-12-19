@@ -1,0 +1,40 @@
+.character-list-item {
+  background-color: var(--dark-bg-secondary);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    .character-list-item__image {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+  }
+
+  &__content {
+    padding: var(--spacing-unit);
+  }
+
+  &__name {
+    margin: 0 0 calc(var(--spacing-unit) * 0.5);
+    color: var(--dark-text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  &__species {
+    margin: 0;
+    color: var(--dark-text-secondary);
+    font-size: 1rem;
+  }
+}
