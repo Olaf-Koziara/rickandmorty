@@ -51,7 +51,9 @@ const CharacterList = () => {
     return (
         <div className='character-list__wraper'>
             <form className='character-list-filter-form' onSubmit={handleFilterFormSubmit}>
-                <input value={nameInputValue} onChange={handleNameInputChange} type="text" name='name'/>
+                <input value={nameInputValue} onChange={handleNameInputChange} placeholder='Search by name...'
+                       type="text"
+                       name='name'/>
             </form>
             <ul className='character-list'>
                 {characters.results.map((item, index) => <Link key={index}
