@@ -5,6 +5,7 @@
   background-color: var(--dark-bg-primary);
   color: var(--dark-text-primary);
   border-radius: var(--border-radius);
+  text-align: start;
 
   &__loading,
   &__error,
@@ -18,6 +19,20 @@
 
   &__error {
     color: #ff6b6b;
+  }
+
+  &__goback-button {
+    padding: calc(var(--spacing-unit));
+    background-color: var(--dark-bg-secondary);
+    color: var(--dark-text-primary);
+    border: none;
+    border-radius: var(--border-radius);
+    margin-bottom: 16px;
+    cursor: pointer;
+    background-image: url("../../assets/arrow.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   &__header {
