@@ -1,4 +1,4 @@
-import 'App.scss'
+import './App.scss'
 import {Outlet} from "react-router-dom";
 
 function App() {

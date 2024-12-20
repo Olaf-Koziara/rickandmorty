@@ -1,6 +1,6 @@
 import {gql, useQuery} from "@apollo/client";
 import {useNavigate, useParams} from "react-router-dom";
-import 'Character.scss'
+import './Character.scss'
 
 export const GET_CHARACTER = gql`
 query Character($id:ID!){
