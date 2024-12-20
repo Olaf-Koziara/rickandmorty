@@ -32,7 +32,7 @@ interface CharactersResponseModel {
 const CharacterList = () => {
     const [nameInputValue, setNameInputValue] = useState('')
     const [filter, setFilter] = useState({name: ''});
-    const [activePage, setActivePage] = useState(0)
+    const [activePage, setActivePage] = useState(1)
     const {loading, error, data} = useQuery<CharactersResponseModel>(GET_CHARACTERS, {
         variables: {
             page: activePage,
@@ -54,8 +54,10 @@ const CharacterList = () => {
                 <input value={nameInputValue} onChange={handleNameInputChange} type="text" name='name'/>
             </form>
             <ul className='character-list'>
-                {characters.results.map((item, index) => <Link to={`/character/${item.id}`}><CharacterListItem
-                    key={index} {...item}/></Link>)}
+                {characters.results.map((item, index) => <Link key={index}
+                                                               to={`/character/${item.id}`}>
+                    <CharacterListItem
+                        {...item}/></Link>)}
             </ul>
             <Pagination initialPage={activePage} totalItems={characters.info.count ?? 0}
                         onPageChange={setActivePage}/>

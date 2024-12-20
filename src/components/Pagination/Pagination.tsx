@@ -1,14 +1,14 @@
 import {useState} from 'react';
 import './Pagination.scss'
 
-const Pagination = ({totalItems, initialPage = 0, initialPageSize = 5, onPageChange}: {
+const Pagination = ({totalItems, initialPage = 1, initialPageSize = 5, onPageChange}: {
     totalItems: number,
     initialPage?: number,
     initialPageSize?: number,
     onPageChange?: (...args: any) => any
 }) => {
     const [activePage, setActivePage] = useState(initialPage);
-    const [pageSize, setPageSize] = useState(initialPageSize);
+    const [pageSize, _setPageSize] = useState(initialPageSize);
     const handlePageChange = (page: number) => {
         setActivePage(page);
         if (onPageChange) {
@@ -19,7 +19,7 @@ const Pagination = ({totalItems, initialPage = 0, initialPageSize = 5, onPageCha
     return (
         <ul className='pagination'>
             {
-                [...Array(Math.round(totalItems / pageSize))].map((item, index) =>
+                [...Array(Math.round(totalItems / pageSize))].map((_item, index) =>
                     paginationLimiter(index) &&
                     (<li className={`pagination__item ${index + 1 === activePage ? 'pagination__item--active' : ''}`}
                          key={index}>

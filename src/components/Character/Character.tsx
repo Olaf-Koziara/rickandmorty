@@ -1,6 +1,6 @@
 import {gql, useQuery} from "@apollo/client";
-import {useParams} from "react-router-dom";
-import './Character.scss'
+import {useNavigate, useParams} from "react-router-dom";
+import 'Character.scss'
 
 export const GET_CHARACTER = gql`
 query Character($id:ID!){
@@ -35,11 +35,13 @@ interface CharacterResponseModel {
 
 const Character = () => {
     const {id} = useParams();
+    const navigate = useNavigate()
     const {loading, error, data} = useQuery<CharacterResponseModel>(GET_CHARACTER, {
         variables: {
             id
         }
     })
+    const handleGoBack = () => navigate(-1)
     if (loading) return <div className="character__loading">Loading...</div>;
     if (error) return <div className="character__error">Error: {error.message}</div>;
     if (!data) return <div className="character__not-found">Character not found</div>;
@@ -48,6 +50,7 @@ const Character = () => {
 
     return (
         <div className="character">
+            <button onClick={handleGoBack} className='character__goback-button'></button>
             <div className="character__header">
                 <img className="character__image" src={character.image} alt={character.name}/>
                 <div className="character__info">
